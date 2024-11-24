@@ -35,7 +35,7 @@ async def chat(request: Request, pdf_file: bytes = File(), filename: str = Form(
 
     async with aiofiles.open(pdf_filename, 'wb') as f:
         await f.write(pdf_file)
- 
+
     response_data = jsonable_encoder(json.dumps({"msg": 'success',"pdf_filename": pdf_filename}))
     res = Response(response_data)
     return res
